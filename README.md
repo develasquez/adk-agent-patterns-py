@@ -34,10 +34,10 @@ cp .env.example .env
 adk web
 
 # O ejecutar un patrón específico desde la terminal
-adk run 01_router
-adk run 02_sequential
-adk run 03_loop
-adk run 04_parallel
+adk run p01_router
+adk run p02_sequential
+adk run p03_loop
+adk run p04_parallel
 ```
 
 ---
@@ -60,7 +60,7 @@ Actúa como un orquestador que analiza la intención del usuario y delega silenc
 * **Atención al Cliente "Zero-Touch":** Triage inteligente de tickets (Soporte Técnico vs. Facturación).
 * **Conserje de E-commerce:** Unifica intenciones de compra (Agente de Catálogo) con consultas de postventa (Agente de Logística) en un solo chat.
 
-### El Código (`01_router/agent.py`)
+### El Código (`p01_router/agent.py`)
 
 En este ejemplo de un Bot de Seguros, el Router decide a qué especialista enviar la consulta del cliente:
 
@@ -126,7 +126,7 @@ El `SequentialAgent` ejecuta sus sub-agentes en un orden fijo y estricto. Es el 
 * **Desarrollo de Software Automatizado:** Escribir código -> Revisar Código -> Refactorizar.
 * **Marketing (Prospección B2B):** Extraer datos web -> Identificar *Pain Points* -> Redactar email persuasivo.
 
-### El Código (`02_sequential/agent.py`)
+### El Código (`p02_sequential/agent.py`)
 
 Aquí simulamos una pequeña fábrica de software autónoma:
 
@@ -185,7 +185,7 @@ Los modelos fundacionales no siempre aciertan a la primera. El `LoopAgent` intro
 * **Legal y Compliance:** Un contrato se redacta y audita en bucle hasta que cumple al 100% con la matriz de riesgo (GDPR, exclusividad, etc.).
 * **Ingeniería de Datos:** Validación de extracción de JSON contra un esquema estricto, corrigiendo formatos de fecha y comas faltantes iterativamente.
 
-### El Código (`03_loop/agent.py`)
+### El Código (`p03_loop/agent.py`)
 
 Implementamos un sistema de revisión de textos creativos usando una función Python como herramienta (`ToolContext`) para romper el bucle:
 
@@ -250,7 +250,7 @@ Ejecuta sub-agentes de forma concurrente para acelerar drásticamente los flujos
 * **Finanzas (Due Diligence):** Un agente extrae ganancias (Q3), otro busca escándalos en noticias, y otro analiza a la competencia, todo al mismo tiempo.
 * **Inteligencia Competitiva:** Escanear simultáneamente los precios y *features* de 5 competidores web en segundos.
 
-### El Código (`04_parallel/agent.py`)
+### El Código (`p04_parallel/agent.py`)
 
 Lanzamos tres agentes investigadores concurrentes que utilizan una herramienta personalizada de búsqueda en Wikipedia (`search_wikipedia`), y un agente fusionador que consolida el reporte:
 
