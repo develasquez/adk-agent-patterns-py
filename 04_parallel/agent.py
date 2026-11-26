@@ -6,8 +6,10 @@ import urllib.request
 
 import certifi
 from google.adk.agents import LlmAgent, ParallelAgent, SequentialAgent
+# from litellm_client import OrbitLiteLLM
 
-GEMINI_MODEL = "gemini-3.5-flash-lite"
+# MODEL = OrbitLiteLLM().get_model()
+MODEL = "gemini-3.5-flash-lite"
 
 
 def search_wikipedia(query: str) -> dict:
@@ -45,7 +47,7 @@ research_tools = [search_wikipedia]
 
 researcher_agent_1 = LlmAgent(
     name="RenewableEnergyResearcher",
-    model=GEMINI_MODEL,
+    model=MODEL,
     instruction="""You are an AI Research Assistant specializing in energy.
 Research the latest advancements in 'renewable energy sources'.
 Use the search_wikipedia tool provided.
@@ -58,7 +60,7 @@ Output *only* the summary.""",
 
 researcher_agent_2 = LlmAgent(
     name="EVResearcher",
-    model=GEMINI_MODEL,
+    model=MODEL,
     instruction="""You are an AI Research Assistant specializing in transportation.
 Research the latest developments in 'electric vehicle technology'.
 Use the search_wikipedia tool provided.
@@ -72,7 +74,7 @@ Output *only* the summary.""",
 # Researcher 3: Carbon Capture
 researcher_agent_3 = LlmAgent(
     name="CarbonCaptureResearcher",
-    model=GEMINI_MODEL,
+    model=MODEL,
     instruction="""You are an AI Research Assistant specializing in climate solutions.
 Research the current state of 'carbon capture methods'.
 Use the search_wikipedia tool provided.
@@ -91,7 +93,7 @@ parallel_research_agent = ParallelAgent(
 
 merger_agent = LlmAgent(
     name="SynthesisAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     instruction="""You are an AI Assistant responsible for combining research findings into a structured report.
 
 Your primary task is to synthesize the following research summaries, clearly attributing findings to their source areas. Structure your response using headings for each topic. Ensure the report is coherent and integrates the key points smoothly.

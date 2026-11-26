@@ -1,7 +1,9 @@
 from google.adk.agents import LlmAgent, LoopAgent, SequentialAgent
 from google.adk.tools import ToolContext
+# from litellm_client import OrbitLiteLLM
 
-GEMINI_MODEL = "gemini-3.5-flash-lite"
+# MODEL = OrbitLiteLLM().get_model()
+MODEL = "gemini-3.5-flash-lite"
 
 STATE_CURRENT_DOC = "current_document"
 STATE_CRITICISM = "criticism"
@@ -17,7 +19,7 @@ def exit_loop(tool_context: ToolContext) -> dict:
 
 initial_writer_agent = LlmAgent(
     name="InitialWriterAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     include_contents="none",
     instruction="""You are a Creative Writing Assistant tasked with starting a story.
     Write the *first draft* of a short story (aim for 2-4 sentences).
@@ -30,7 +32,7 @@ initial_writer_agent = LlmAgent(
 
 critic_agent_in_loop = LlmAgent(
     name="CriticAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     include_contents="none",
     instruction=f"""You are a Constructive Critic AI reviewing a short document draft (typically 2-6 sentences). Your goal is balanced feedback.
 
@@ -54,7 +56,7 @@ critic_agent_in_loop = LlmAgent(
 
 refiner_agent_in_loop = LlmAgent(
     name="RefinerAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     include_contents="none",
     instruction=f"""You are a Creative Writing Assistant refining a document based on feedback OR exiting the process.
     **Current Document:**

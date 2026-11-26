@@ -1,13 +1,15 @@
 from google.adk.agents import LlmAgent
+# from litellm_client import OrbitLiteLLM
 
 # --- Constants ---
-GEMINI_MODEL = "gemini-3.5-flash-lite"
+# MODEL = OrbitLiteLLM().get_model()
+MODEL = "gemini-3.5-flash-lite"
 
 # --- 1. Define Specialized Sub-Agents ---
 
 car_insurance_agent = LlmAgent(
     name="CarInsuranceAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     # The 'description' is CRITICAL. The Router reads this to make decisions.
     description=(
         "Expert exclusively in Car insurance, buying new or used cars, "
@@ -20,7 +22,7 @@ car_insurance_agent = LlmAgent(
 
 life_insurance_agent = LlmAgent(
     name="LifeInsuranceAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     description=(
         "Expert in life insurance, death policies, savings for the future, "
         "and family protection."
@@ -32,7 +34,7 @@ life_insurance_agent = LlmAgent(
 
 health_insurance_agent = LlmAgent(
     name="HealthInsuranceAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     description=(
         "Expert in supplementary health insurance, medical expense reimbursements, "
         "clinics, and pharmacies."
@@ -46,7 +48,7 @@ health_insurance_agent = LlmAgent(
 
 router_agent = LlmAgent(
     name="InsuranceRouterAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     description="The main orchestrator that greets the user and routes the task.",
     # Sub-agents are injected directly into the main Router
     sub_agents=[car_insurance_agent, life_insurance_agent, health_insurance_agent],

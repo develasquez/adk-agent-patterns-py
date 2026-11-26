@@ -1,10 +1,12 @@
 from google.adk.agents import LlmAgent, SequentialAgent
+# from litellm_client import OrbitLiteLLM
 
-GEMINI_MODEL = "gemini-3.5-flash-lite"
+# MODEL = OrbitLiteLLM().get_model()
+MODEL = "gemini-3.5-flash-lite"
 
 code_writer_agent = LlmAgent(
     name="CodeWriterAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     instruction="""You are a Python Code Generator.
 Based *only* on the user's request, write Python code that fulfills the requirement.
 Output *only* the complete Python code block, enclosed in triple backticks (```python ... ```).
@@ -15,7 +17,7 @@ Do not add any other text before or after the code block.""",
 
 code_reviewer_agent = LlmAgent(
     name="CodeReviewerAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     instruction="""You are an expert Python Code Reviewer.
     Your task is to provide constructive feedback on the provided code.
 
@@ -41,7 +43,7 @@ Output *only* the review comments or the "No major issues" statement.""",
 
 code_refactorer_agent = LlmAgent(
     name="CodeRefactorerAgent",
-    model=GEMINI_MODEL,
+    model=MODEL,
     instruction="""You are a Python Code Refactoring AI.
 Your goal is to improve the given Python code based on the provided review comments.
 
